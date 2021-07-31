@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Dang_nhap">
+
+    <ImageView
+        android:id="@+id/login4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/login4"
+        android:layout_margin="16dp"/>
+
+    <TextView
+        android:id="@+id/dangnhap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Đăng Nhập"
+        android:layout_gravity="center_horizontal"
+        android:textSize="32sp"
+        android:layout_marginTop="8dp"
+        android:layout_below="@+id/login4"
+        android:layout_centerInParent="true"
+        />
+
+    <LinearLayout
+        android:id="@+id/liner1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dangnhap"
+        android:orientation="vertical"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/tvtk1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tài khoản"/>
+            <ImageView
+                android:layout_marginTop="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/fi_user"
+                android:layout_below="@+id/tvtk1"/>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_marginTop="16dp"
+                android:layout_below="@+id/tvtk1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hintEnabled="false">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="24dp"
+                    android:padding="4dp"
+                    android:background="#ffff"
+                    android:hint="Nhập email/sdt"/>
+            </com.google.android.material.textfield.TextInputLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/tvmk2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mật khẩu"
+                android:layout_marginTop="24dp"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/fi_lock"
+                android:layout_below="@+id/tvmk2"
+                android:layout_marginTop="16dp"/>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvmk2"
+                app:passwordToggleTint="@color/teal_200"
+                app:hintEnabled="false"
+                app:passwordToggleEnabled="true">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#ffff"
+                    android:layout_marginLeft="24dp"
+                    android:padding="4dp"
+                    android:hint="Nhập mật khẩu"
+                    android:gravity="bottom"
+                    android:inputType="textPassword"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+        </RelativeLayout>
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            >
+            <Button
+                android:id="@+id/dangnhap1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32dp"
+                android:layout_marginRight="32dp"
+                android:background="@drawable/custom_button2"
+                android:text="Đăng Nhập"
+                android:textSize="24sp"
+                android:textAllCaps="false"/>
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:paddingTop="16dp"
+            >
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chưa có tài khoản? Hãy"
+                android:textSize="16sp"/>
+            <TextView
+                android:id="@+id/tvdk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" Đăng Ký"
+                android:textSize="16sp"
+                android:textColor="@color/teal_200"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

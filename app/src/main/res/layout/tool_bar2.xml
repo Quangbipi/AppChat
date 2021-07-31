@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.appbar.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@android:color/transparent"
+    android:id="@+id/appbar">
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@drawable/custom_actionbar"
+        app:titleTextColor="@color/white"
+        >
+
+        <RelativeLayout
+            android:background="@android:color/transparent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical">
+            <TextView
+                android:textSize="32sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tin nhắn"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:layout_alignParentStart="true"
+                android:layout_centerInParent="true"/>
+
+            <ImageButton
+                android:layout_marginRight="32dp"
+                android:layout_alignParentEnd="true"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/custom_button"
+                android:src="@drawable/setting2"
+                android:backgroundTint="@color/white"/>
+        </RelativeLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
+
+</com.google.android.material.appbar.AppBarLayout>

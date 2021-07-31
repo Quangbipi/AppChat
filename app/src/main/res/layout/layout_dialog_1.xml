@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/bg_custom"
+    android:layout_margin="16dp">
+    <ImageView
+        android:layout_marginTop="24dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/checked"
+        android:layout_gravity="center_horizontal"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Đăng Ký Thành Công"
+        android:textSize="24sp"
+        android:layout_marginTop="24dp"
+        android:layout_gravity="center_horizontal"/>
+    <TextView
+        android:textSize="16sp"
+        android:layout_width="168dp"
+        android:layout_height="wrap_content"
+        android:text="Bạn có thể đăng nhập vào tài khoản vừa tạo"
+        android:gravity="center_horizontal"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="24dp"/>
+    <View
+        android:background="#A3A3A3"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="16dp"/>
+    <TextView
+        android:id="@+id/tvdialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="Đăng nhập"
+        android:textSize="24sp"
+        android:textColor="@color/teal_200"
+        android:layout_marginTop="16dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="16dp"/>
+</LinearLayout>

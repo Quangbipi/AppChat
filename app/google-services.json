@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "183581342878",
+    "firebase_url": "https://boxchat-2b7f0-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "boxchat-2b7f0",
+    "storage_bucket": "boxchat-2b7f0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:183581342878:android:0f253873a8638318550f8f",
+        "android_client_info": {
+          "package_name": "com.quangminh.uiexample02"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "183581342878-q2notfu7r37vnoqf6qc4a67mbi707c3l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANNOEom8rm1q45RATOws99oJDM2cbQcVc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "183581342878-q2notfu7r37vnoqf6qc4a67mbi707c3l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

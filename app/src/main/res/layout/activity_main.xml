@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/img1"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:src="@drawable/anh_login" />
+    <TextView
+        android:id="@+id/tv1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/img1"
+        android:text="Tài khoản mới"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:gravity="center_vertical"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="24dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tv1"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:orientation="vertical"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <TextView
+                android:textSize="18sp"
+                android:id="@+id/tvtk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tài khoản"
+                android:layout_marginBottom="8dp"/>
+            <ImageView
+
+                android:id="@+id/img2"
+                android:scaleType="center"
+                android:layout_below="@+id/tvtk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/fi_user"
+                android:layout_marginBottom="16dp"
+                android:layout_marginTop="16dp"/>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="24dp"
+                android:layout_below="@+id/tvtk"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textlayoot02"
+                app:hintEnabled="false"
+                app:passwordToggleEnabled="false">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="4dp"
+                    android:hint="Nhập email"
+                    android:background="#ffff"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_marginTop="24dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <TextView
+                android:textSize="18sp"
+                android:id="@+id/tvmk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mật khẩu"
+                />
+            <ImageView
+
+                android:id="@+id/img4"
+                android:scaleType="center"
+                android:layout_below="@+id/tvmk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/fi_lock"
+                android:layout_marginBottom="16dp"
+                android:layout_marginTop="16dp"/>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_marginLeft="24dp"
+                android:layout_below="@+id/tvmk"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textlayoot0"
+                app:hintEnabled="false"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/teal_200"
+                >
+                <com.google.android.material.textfield.TextInputEditText
+
+                    android:gravity="bottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="4dp"
+                    android:inputType="textPassword"
+                    android:hint="Nhập password"
+                    android:background="#ffff"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_marginTop="24dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <TextView
+                android:textSize="18sp"
+                android:id="@+id/tvnlmk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nhập lại mật khẩu"
+                />
+            <ImageView
+
+                android:id="@+id/img3"
+                android:scaleType="center"
+                android:layout_below="@+id/tvnlmk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/fi_lock"
+                android:layout_marginBottom="16dp"
+                android:layout_marginTop="16dp"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_marginLeft="24dp"
+                android:layout_below="@+id/tvnlmk"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textlayoot"
+                app:hintEnabled="false"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/teal_200"
+                >
+                <com.google.android.material.textfield.TextInputEditText
+
+                    android:gravity="bottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="4dp"
+                    android:hint="Nhập lại password"
+                    android:inputType="textPassword"
+                    android:background="#ffff"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlt1"
+            android:layout_marginTop="24dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:typeface="sans"
+                android:layout_centerVertical="true"
+                android:id="@+id/tvb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Bước 1/3"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:textColor="#A3A2A2"/>
+
+            <Button
+                android:id="@+id/buttonNext"
+                android:drawableRight="@drawable/fi_arrow_right"
+                android:textSize="8sp"
+                android:textColor="#fff"
+                android:background="@drawable/custom_button"
+                android:layout_alignRight="@+id/tvb"
+                android:textAllCaps="false"
+                android:layout_height="60dp"
+                android:layout_width="60dp"
+                />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+
+
+</RelativeLayout>
