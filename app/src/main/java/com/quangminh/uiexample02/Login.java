@@ -130,7 +130,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 startActivity(intent);
                 break;
             case R.id.btdk:
-                Intent i = new Intent(Login.this, MainActivity.class);
+                Intent i = new Intent(Login.this, Dang_ky.class);
                 startActivity(i);
                 break;
         }

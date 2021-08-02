@@ -30,8 +30,9 @@ public class Fragment_1 extends Fragment {
 
     String acc ;
     String pass;
+    String acc2;
     Dang_ky mMainActivity;
-    EditText account, password;
+    EditText account, password, replacepass;
     ImageButton imageButton;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -44,13 +45,15 @@ public class Fragment_1 extends Fragment {
         mMainActivity = (Dang_ky) getActivity();
         account = view.findViewById(R.id.accountdk);
         password = view.findViewById(R.id.passdk);
+        replacepass = view.findViewById(R.id.replacepass);
 
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 acc = account.getText().toString().trim();
                 pass = password.getText().toString().trim();
-                if(isValitk()&&isValimk()) {
+                acc2 = replacepass.getText().toString().trim();
+                if(isValitk()&&isValimk()&&isEquals()) {
                     mOnButtonClickListener.onButtonClicked(v);
                     sendData();
                 }else {
@@ -94,5 +97,9 @@ public class Fragment_1 extends Fragment {
 
     public boolean isValimk(){
         return !TextUtils.isEmpty(pass) && pass.length() >=6;
+    }
+
+    public  boolean isEquals(){
+        return acc2.equals(pass);
     }
 }

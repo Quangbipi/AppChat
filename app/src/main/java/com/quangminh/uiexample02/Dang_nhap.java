@@ -22,7 +22,7 @@ import java.util.regex.Pattern;
 
 public class Dang_nhap extends AppCompatActivity {
 
-    TextView dangKy;
+    TextView dangKy, forgotMk;
     Button dangNhap;
     EditText taiKhoan, matKhau;
 
@@ -34,6 +34,7 @@ public class Dang_nhap extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dang_nhap_01);
 
+        forgotMk = findViewById(R.id.fogotmk);
         dangKy = findViewById(R.id.textView12);
         dangNhap = findViewById(R.id.dnbt);
         taiKhoan = findViewById(R.id.edtsignin);
@@ -53,6 +54,13 @@ public class Dang_nhap extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(Dang_nhap.this, Dang_ky.class);
                 startActivity(intent);
+            }
+        });
+
+        forgotMk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Dang_nhap.this, ForgotPass.class));
             }
         });
         progressBar.setVisibility(View.GONE);
@@ -94,6 +102,7 @@ public class Dang_nhap extends AppCompatActivity {
                 if(task.isSuccessful()){
                     Intent i = new Intent(Dang_nhap.this, Setting.class);
                     startActivity(i);
+                    progressBar.setVisibility(View.GONE);
 
                 }else{
                     Toast.makeText(Dang_nhap.this, "Tài khoản hoặc mật khẩu không chihs xác", Toast.LENGTH_SHORT).show();
@@ -101,5 +110,6 @@ public class Dang_nhap extends AppCompatActivity {
                 }
             }
         });
+
     }
 }

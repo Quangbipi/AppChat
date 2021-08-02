@@ -12,10 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UIExample02"
         android:usesCleartextTraffic="true">
+        <activity android:name=".ForgotPass"></activity>
         <activity android:name=".ProfileActivity"></activity>
-        <activity android:name=".Dang_ky"></activity>
+        <activity android:name=".Dang_ky" />
         <activity android:name=".Giao_dien_chinh" />
-        <activity android:name=".Setting" />
+        <activity android:name=".Setting"></activity>
         <activity android:name=".Dang_nhap" />
         <activity android:name=".Login">
             <intent-filter>

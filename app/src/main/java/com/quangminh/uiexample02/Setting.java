@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,6 +27,8 @@ public class Setting extends AppCompatActivity {
     FirebaseAuth mAuth;
     DatabaseReference databaseReference;
     FirebaseUser user;
+
+    ImageButton imageMess;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +37,7 @@ public class Setting extends AppCompatActivity {
         UserName = findViewById(R.id.username);
         logOut = findViewById(R.id.logouttv);
         thongTin = findViewById(R.id.thongtin);
+        imageMess = findViewById(R.id.mess);
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference("Account");
@@ -63,6 +67,19 @@ public class Setting extends AppCompatActivity {
             public void onClick(View v) {
                 FirebaseAuth.getInstance().signOut();
                 startActivity(new Intent(Setting.this, Dang_nhap.class));
+            }
+        });
+
+        thongTin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Setting.this, ProfileActivity.class));
+            }
+        });
+        imageMess.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Setting.this, Giao_dien_chinh.class));
             }
         });
 

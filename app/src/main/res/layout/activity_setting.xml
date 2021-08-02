@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Setting"
-    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+    android:theme="@style/ThemeOverlay.AppCompat.Dark"
+    >
 
 
     <include
@@ -37,6 +38,7 @@
             android:textColor="@color/black"
             android:layout_toRightOf="@id/avta"/>
         <TextView
+
             android:id="@+id/thongtin"
             android:layout_marginLeft="16dp"
             android:layout_width="wrap_content"
@@ -44,7 +46,7 @@
             android:text="Thông tin chi tiết"
             android:layout_toRightOf="@id/avta"
             android:textSize="16sp"
-            android:textColor="#787878"
+            android:textColor="#00BCD4"
             android:layout_alignBottom="@id/avta"/>
     </RelativeLayout>
     <LinearLayout
