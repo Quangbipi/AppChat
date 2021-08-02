@@ -27,6 +27,7 @@
             android:src="@drawable/avatar_ex"
             app:riv_corner_radius="40dp"/>
         <TextView
+            android:id="@+id/username"
             android:layout_marginLeft="16dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -240,6 +241,7 @@
                 android:backgroundTint="#02A1AF"
                 />
             <TextView
+                android:id="@+id/logouttv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Đăng xuất"
