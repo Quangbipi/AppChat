@@ -90,13 +90,17 @@ public class Fragment_2 extends Fragment {
                 nam = name.getText().toString().trim();
                 date = datofBirth.getText().toString().trim();
                 phone= phoneNumber.getText().toString().trim();
-                if(isValiname()&&isValidate()&&isValiphone()){
+//                if(isValiname()&&isValidate()&&isValiphone()){
+//                    mOnButtonClickListener.onButtonClicked(v);
+//                    senData();
+//                }else{
+//                    Toast.makeText(getContext(), "Bạn không được bỏ trống mục nào", Toast.LENGTH_SHORT).show();
+//                }
+
+                if(Validate()){
                     mOnButtonClickListener.onButtonClicked(v);
                     senData();
-                }else{
-                    Toast.makeText(getContext(), "Bạn không được bỏ trống mục nào", Toast.LENGTH_SHORT).show();
                 }
-
 
             }
         });
@@ -136,5 +140,24 @@ public class Fragment_2 extends Fragment {
     }
     public boolean isValiphone(){
         return !TextUtils.isEmpty(phone);
+    }
+
+    private boolean Validate(){
+        if(nam.isEmpty()){
+            name.setError("Không được bỏ trống");
+            name.requestFocus();
+            return false;
+        }
+        if(date.isEmpty()){
+            datofBirth.setError("Không được bỏ trống");
+            datofBirth.requestFocus();
+            return false;
+        }
+        if(phone.isEmpty()){
+            phoneNumber.setError("Không được bỏ trống");
+            phoneNumber.requestFocus();
+            return false;
+        }
+        return  true;
     }
 }

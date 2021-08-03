@@ -16,6 +16,8 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import java.util.regex.Pattern;
+
 
 public class Fragment_1 extends Fragment {
 
@@ -53,12 +55,17 @@ public class Fragment_1 extends Fragment {
                 acc = account.getText().toString().trim();
                 pass = password.getText().toString().trim();
                 acc2 = replacepass.getText().toString().trim();
-                if(isValitk()&&isValimk()&&isEquals()) {
+//                if(isValitk()&&isValimk()&&isEquals()) {
+//                    mOnButtonClickListener.onButtonClicked(v);
+//                    sendData();
+//                }else {
+//                    Toast.makeText(getContext(), "Tài khoản hoặc mật khẩu không hợp lệ", Toast.LENGTH_SHORT).show();
+//                }
+                if(Validate()){
                     mOnButtonClickListener.onButtonClicked(v);
                     sendData();
-                }else {
-                    Toast.makeText(getContext(), "Tài khoản hoặc mật khẩu không hợp lệ", Toast.LENGTH_SHORT).show();
                 }
+
             }
         });
         return view;
@@ -91,15 +98,51 @@ public class Fragment_1 extends Fragment {
 
 
     }
-    public boolean isValitk(){
-        return !TextUtils.isEmpty(acc) && Patterns.EMAIL_ADDRESS.matcher(acc).matches();
+//    public boolean isValitk(){
+//        return !TextUtils.isEmpty(acc) && Patterns.EMAIL_ADDRESS.matcher(acc).matches();
+//    }
+//
+//    public boolean isValimk(){
+//        return !TextUtils.isEmpty(pass) && pass.length() >=6;
+//    }
+//
+//    public  boolean isEquals(){
+//        return acc2.equals(pass);
+//    }
+
+    private boolean Validate(){
+        if(acc.isEmpty()){
+            account.setError("Không được bỏ trống");
+            account.requestFocus();
+            return false;
+        }
+        if(!Patterns.EMAIL_ADDRESS.matcher(acc).matches()){
+            account.setError("Email không hợp lệ");
+            account.requestFocus();
+            return false;
+        }
+        if(pass.isEmpty()){
+            password.setError("Không được bỏ trống");
+            password.requestFocus();
+            return false;
+        }
+        if(pass.length()<6){
+            password.setError("Mật khẩu lớn hơn 6");
+            password.requestFocus();
+            return false;
+        }
+        if(acc2.isEmpty()){
+            replacepass.setError("Không được bỏ trống");
+            replacepass.requestFocus();
+            return false;
+        }
+        if(!acc2.equals(pass)){
+            replacepass.setError("Mật khẩu chưa đúng");
+            replacepass.requestFocus();
+            return false;
+        }
+
+        return true;
     }
 
-    public boolean isValimk(){
-        return !TextUtils.isEmpty(pass) && pass.length() >=6;
-    }
-
-    public  boolean isEquals(){
-        return acc2.equals(pass);
-    }
 }

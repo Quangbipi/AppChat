@@ -1,14 +1,23 @@
 package com.quangminh.uiexample02;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.Manifest;
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -31,10 +40,13 @@ import com.quangminh.uiexample02.model.AccountUser;
 
 import java.util.Random;
 
+import static com.quangminh.uiexample02.Fragment_3.GALLER_ACTION_PICK_CODE;
+
 public class Dang_ky extends AppCompatActivity implements Fragment_1.OnButtonClickListener, Fragment_2.OnButtonClickListener, Fragment_3.OnButtonClickListener {
 
     ViewPager2 viewPager2;
 
+    private static final int REQUEST_PERMISSION_CODE = 0;
     DatabaseReference mData;
     FirebaseAuth mAuth;
     String pass="";
@@ -54,6 +66,7 @@ public class Dang_ky extends AppCompatActivity implements Fragment_1.OnButtonCli
         viewPager2.setAdapter(new ViewpagerAdapter(this));
 
         viewPager2.setUserInputEnabled(false);
+        runTimePermission();
 
 
 
@@ -71,6 +84,7 @@ public class Dang_ky extends AppCompatActivity implements Fragment_1.OnButtonCli
 
                 break;
             case R.id.next22:
+
                 viewPager2.setCurrentItem(curr+2);
                 break;
             case R.id.next33:
@@ -183,4 +197,47 @@ public class Dang_ky extends AppCompatActivity implements Fragment_1.OnButtonCli
         dialog.show();
 
     }
+
+    private void runTimePermission(){
+        if(Build.VERSION.SDK_INT>=23 && ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED
+                && ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
+            requestPermissions(new String[]{Manifest.permission.CAMERA,
+                    Manifest.permission.READ_EXTERNAL_STORAGE,
+            }, REQUEST_PERMISSION_CODE);
+
+        }
+
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if(requestCode==REQUEST_PERMISSION_CODE){
+            if(grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED){
+                Toast.makeText(this, "Permission granted", Toast.LENGTH_SHORT).show();
+            }else{
+                runTimePermission();
+            }
+        }
+    }
+    private void takePhoto() {
+        Intent i = new Intent(Intent.ACTION_PICK);
+        i.setType("image/*");
+        startActivityForResult(i, GALLER_ACTION_PICK_CODE);
+
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(resultCode==RESULT_OK){
+            if(requestCode == GALLER_ACTION_PICK_CODE){
+
+            }
+        }
+    }
+
+
 }
