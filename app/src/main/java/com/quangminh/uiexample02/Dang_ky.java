@@ -15,10 +15,13 @@ import android.Manifest;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -38,15 +41,14 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.quangminh.uiexample02.Adapter.ViewpagerAdapter;
 import com.quangminh.uiexample02.model.AccountUser;
 
-import java.util.Random;
+import java.io.IOException;
 
-import static com.quangminh.uiexample02.Fragment_3.GALLER_ACTION_PICK_CODE;
 
 public class Dang_ky extends AppCompatActivity implements Fragment_1.OnButtonClickListener, Fragment_2.OnButtonClickListener, Fragment_3.OnButtonClickListener {
 
     ViewPager2 viewPager2;
 
-    private static final int REQUEST_PERMISSION_CODE = 0;
+    public static final int REQUEST_PERMISSION_CODE = 10;
     DatabaseReference mData;
     FirebaseAuth mAuth;
     String pass="";
@@ -55,7 +57,30 @@ public class Dang_ky extends AppCompatActivity implements Fragment_1.OnButtonCli
     String date = "";
     String phone = "";
     String gender = "";
-    Fragment_3 fragment_3;
+    Bitmap bitmap ;
+    final private  Fragment_3 fragment_3 = new Fragment_3();
+    final  private ActivityResultLauncher<Intent> mActivityResultLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+
+                    if(result.getResultCode()==RESULT_OK){
+                        Intent intent = result.getData();
+                        if(intent==null){
+                            return;
+                        }
+                        Uri uri = intent.getData();
+                        try {
+                             //bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
+                            fragment_3.setImageAvt(uri);
+
+                        } catch (NullPointerException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                }
+            });
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,7 +91,7 @@ public class Dang_ky extends AppCompatActivity implements Fragment_1.OnButtonCli
         viewPager2.setAdapter(new ViewpagerAdapter(this));
 
         viewPager2.setUserInputEnabled(false);
-        runTimePermission();
+
 
 
 
@@ -198,16 +223,7 @@ public class Dang_ky extends AppCompatActivity implements Fragment_1.OnButtonCli
 
     }
 
-    private void runTimePermission(){
-        if(Build.VERSION.SDK_INT>=23 && ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED
-                && ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
-            requestPermissions(new String[]{Manifest.permission.CAMERA,
-                    Manifest.permission.READ_EXTERNAL_STORAGE,
-            }, REQUEST_PERMISSION_CODE);
 
-        }
-
-    }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -215,29 +231,29 @@ public class Dang_ky extends AppCompatActivity implements Fragment_1.OnButtonCli
 
         if(requestCode==REQUEST_PERMISSION_CODE){
             if(grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED){
+                takePicture();
                 Toast.makeText(this, "Permission granted", Toast.LENGTH_SHORT).show();
             }else{
-                runTimePermission();
+                Toast.makeText(this, "Vui lòng cho phép truy cập quyền", Toast.LENGTH_SHORT).show();
             }
         }
     }
-    private void takePhoto() {
-        Intent i = new Intent(Intent.ACTION_PICK);
+    public void takePicture() {
+        Intent i = new Intent();
         i.setType("image/*");
-        startActivityForResult(i, GALLER_ACTION_PICK_CODE);
+        i.setAction(Intent.ACTION_GET_CONTENT);
+        mActivityResultLauncher.launch(Intent.createChooser(i, "Selects Picture"));
 
     }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if(resultCode==RESULT_OK){
-            if(requestCode == GALLER_ACTION_PICK_CODE){
-
-            }
-        }
-    }
-
 
 }
+//private void runTimePermission(){
+//    if(Build.VERSION.SDK_INT>=23 && ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED
+//            && ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
+//        requestPermissions(new String[]{Manifest.permission.CAMERA,
+//                Manifest.permission.READ_EXTERNAL_STORAGE,
+//        }, REQUEST_PERMISSION_CODE);
+//
+//    }
+//
+//}

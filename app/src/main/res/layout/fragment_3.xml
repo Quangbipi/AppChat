@@ -7,7 +7,7 @@
     tools:context=".Fragment_3">
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/imageView55"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
@@ -29,7 +29,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView55" />
 
     <TextView
                 android:id="@+id/textView7"
@@ -43,7 +43,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <com.makeramen.roundedimageview.RoundedImageView
-        android:id="@+id/roundedImageView"
+        android:id="@+id/rounder"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="48dp"
@@ -55,8 +55,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView7"
-        app:riv_corner_radius="90dp"
-        tools:ignore="MissingConstraints" />
+        app:riv_corner_radius="90dp" />
     <TextView
                 android:id="@+id/textView8"
                 android:layout_width="wrap_content"
@@ -66,7 +65,7 @@
                 android:text="Giới tính"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/roundedImageView" />
+                app:layout_constraintTop_toBottomOf="@+id/rounder" />
 
     <ImageButton
                 android:id="@+id/imageButton22"
