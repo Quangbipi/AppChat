@@ -4,8 +4,10 @@ import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -39,6 +41,7 @@ import com.makeramen.roundedimageview.RoundedImageView;
 
 import static android.app.Activity.RESULT_OK;
 import static com.quangminh.uiexample02.Dang_ky.REQUEST_PERMISSION_CODE;
+import static com.quangminh.uiexample02.R.drawable.avatar_ex;
 import static com.quangminh.uiexample02.R.drawable.avt2;
 
 
@@ -49,19 +52,32 @@ public class Fragment_3 extends Fragment {
     ImageButton imageButton3, male, female;
     String gender="";
     RoundedImageView avatar;
+    View view;
+
+
+    Uri uri;
+    BroadcastReceiver receiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if(intent.getAction().equals("setAvatar")){
+                uri = intent.getParcelableExtra("uri");
+                setImageAvt(uri);
+            }
+        }
+    };
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_3, container, false);
+        view = inflater.inflate(R.layout.fragment_3, container, false);
 
         imageButton3 = view.findViewById(R.id.next33);
         male = view.findViewById(R.id.imageButton22);
         female = view.findViewById(R.id.imageButton33);
         mDangky = (Dang_ky) getActivity();
-        avatar = view.findViewById(R.id.rounder);
+        avatar = view.findViewById(R.id.rounded);
 
         imageButton3.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,6 +95,7 @@ public class Fragment_3 extends Fragment {
         male.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                avatar.setImageResource(avatar_ex);
                 male.setBackgroundResource(R.drawable.custom_button2);
                 male.setColorFilter(getResources().getColor(R.color.white, null));
                 female.setBackgroundResource(R.drawable.button_disable);
@@ -115,6 +132,11 @@ public class Fragment_3 extends Fragment {
         return view;
     }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        getActivity().registerReceiver(receiver, new IntentFilter("uri"));
+    }
 
     public void opentDialog(int gravity){
 
@@ -178,6 +200,7 @@ public class Fragment_3 extends Fragment {
         return !TextUtils.isEmpty(gender);
     }
 
+    //Dialog
     private void oentDialogImg(int gravity) {
         final Dialog dialog = new Dialog(getContext());
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -221,6 +244,7 @@ public class Fragment_3 extends Fragment {
         dialog.show();
     }
 
+    //Check Permission
     private void runTimePermission(){
 
         Dang_ky dangKy = (Dang_ky)getActivity();
@@ -242,18 +266,17 @@ public class Fragment_3 extends Fragment {
 
         }
     }
-
+// set avatar
     public void setImageAvt(Uri uri){
-
         try{
             avatar.setImageURI(uri);
 
-            Toast.makeText(getContext(), uri.toString(), Toast.LENGTH_SHORT).show();
         }catch (NullPointerException e){
             e.printStackTrace();
         }
 
 
     }
+
 
 }

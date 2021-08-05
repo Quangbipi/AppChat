@@ -58,7 +58,8 @@ public class Dang_ky extends AppCompatActivity implements Fragment_1.OnButtonCli
     String phone = "";
     String gender = "";
     Bitmap bitmap ;
-    final private  Fragment_3 fragment_3 = new Fragment_3();
+//    final  Fragment_3 fragment_3 = new Fragment_3();
+
     final  private ActivityResultLauncher<Intent> mActivityResultLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
                 @Override
@@ -69,15 +70,15 @@ public class Dang_ky extends AppCompatActivity implements Fragment_1.OnButtonCli
                         if(intent==null){
                             return;
                         }
+                        //Lấy uri
                         Uri uri = intent.getData();
-                        try {
-                             //bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
-                            fragment_3.setImageAvt(uri);
 
-                        } catch (NullPointerException e) {
-                            e.printStackTrace();
-                        }
-
+                        //bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
+                        //truyền uri sang Fragment
+//                        fragment_3.setImageAvt(uri);
+                        Intent broadcast = new Intent("setAvatar");
+                        intent.putExtra("uri", uri);
+                        sendBroadcast(broadcast);
                     }
                 }
             });
@@ -238,6 +239,7 @@ public class Dang_ky extends AppCompatActivity implements Fragment_1.OnButtonCli
             }
         }
     }
+    //Nhận ảnh
     public void takePicture() {
         Intent i = new Intent();
         i.setType("image/*");
