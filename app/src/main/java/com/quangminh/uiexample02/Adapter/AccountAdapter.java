@@ -1,6 +1,5 @@
 package com.quangminh.uiexample02.Adapter;
 
-import android.accounts.Account;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,23 +11,22 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.quangminh.uiexample02.R;
-import com.quangminh.uiexample02.model.Friends;
+import com.quangminh.uiexample02.model.AccountUser;
 
 import java.util.List;
-import java.util.zip.Inflater;
 
 public class AccountAdapter extends RecyclerView.Adapter<AccountAdapter.AccountVH> {
 
-    List<Friends> friends;
+    List<AccountUser> friends;
 
     Context context;
 
-    public AccountAdapter(List<Friends> friends, Context context) {
+    public AccountAdapter(List<AccountUser> friends, Context context) {
         this.friends = friends;
         this.context = context;
     }
 
-    public void setData(List<Friends> accounts){
+    public void setData(List<AccountUser> accounts){
         this.friends=accounts;
         notifyDataSetChanged();
     }
@@ -43,11 +41,10 @@ public class AccountAdapter extends RecyclerView.Adapter<AccountAdapter.AccountV
 
     @Override
     public void onBindViewHolder(@NonNull AccountVH holder, int position) {
-        Friends friend = friends.get(position);
-        holder.roundedImageView.setImageResource(friend.getAvt());
+        AccountUser friend = friends.get(position);
+        holder.roundedImageView.setImageResource(R.drawable.avatar_ex);
         holder.name.setText(friend.getName());
-        holder.chat.setText(friend.getInbox());
-        holder.day.setText(friend.getDate());
+
 
     }
 
@@ -62,13 +59,12 @@ public class AccountAdapter extends RecyclerView.Adapter<AccountAdapter.AccountV
     public class AccountVH extends RecyclerView.ViewHolder{
 
         RoundedImageView roundedImageView;
-        TextView name, chat, day;
+        TextView name;
         public AccountVH(@NonNull View itemView) {
             super(itemView);
             roundedImageView = itemView.findViewById(R.id.avt);
             name = itemView.findViewById(R.id.name);
-            chat = itemView.findViewById(R.id.chat);
-            day = itemView.findViewById(R.id.day);
+
         }
     }
 }

@@ -47,11 +47,11 @@ public class ProfileActivity extends AppCompatActivity {
 //                    String soDt = accountUser.phoneNumber;
 //                    String ngaySinh = accountUser.dateOfBirth;
 //                    String
-                    name.setText(accountUser.name);
-                    mail.setText(accountUser.account);
-                    phoneNumber.setText(accountUser.phoneNumber);
-                    dateofBirth.setText(accountUser.dateOfBirth);
-                    gender.setText(accountUser.gender);
+                    name.setText(accountUser.getName());
+                    mail.setText(accountUser.getAccount());
+                    phoneNumber.setText(accountUser.getPhoneNumber());
+                    dateofBirth.setText(accountUser.getDateOfBirth());
+                    gender.setText(accountUser.getGender());
                 }
 
             }

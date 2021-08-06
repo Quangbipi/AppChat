@@ -57,6 +57,7 @@ public class Dang_ky extends AppCompatActivity implements Fragment_1.OnButtonCli
     String date = "";
     String phone = "";
     String gender = "";
+    String userId = "";
     Bitmap bitmap ;
 //    final  Fragment_3 fragment_3 = new Fragment_3();
 
@@ -117,7 +118,7 @@ public class Dang_ky extends AppCompatActivity implements Fragment_1.OnButtonCli
 
                 mAuth = FirebaseAuth.getInstance();
                 //object đẩy lên
-                AccountUser accountUser = new AccountUser(acc, pass, name, date, phone, gender);
+
 
                 mAuth.createUserWithEmailAndPassword(acc, pass)
                         .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -127,7 +128,10 @@ public class Dang_ky extends AppCompatActivity implements Fragment_1.OnButtonCli
                         //nếu đăng ký thành công
                         if(task.isSuccessful()){
                             //mở dialog thông báo
+                            FirebaseUser firebaseUser = mAuth.getCurrentUser();
+                            userId = firebaseUser.getUid();
                             opentDialog(Gravity.CENTER);
+                            AccountUser accountUser = new AccountUser(acc, pass, name, date, phone, gender, userId);
                             // realtime db lên
                             FirebaseDatabase.getInstance("https://boxchat-2b7f0-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Account")
                                     .child(FirebaseAuth.getInstance().getUid()).setValue(accountUser)

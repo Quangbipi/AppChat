@@ -50,7 +50,7 @@ public class Setting extends AppCompatActivity {
 
                 if(accountUser!=null){
 
-                    String userName = accountUser.name;
+                    String userName = accountUser.getName();
                     UserName.setText(userName);
                 }
             }

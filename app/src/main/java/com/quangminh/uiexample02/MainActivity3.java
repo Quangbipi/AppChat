@@ -90,7 +90,7 @@ public class MainActivity3 extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                user = new AccountUser(account,password, hoTen, dateOfbirth, phoneNumber, gender);
+                //user = new AccountUser(account,password, hoTen, dateOfbirth, phoneNumber, gender);
 
                 mData = FirebaseDatabase.getInstance("https://boxchat-2b7f0-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
                 mData.child(phoneNumber).setValue(user);

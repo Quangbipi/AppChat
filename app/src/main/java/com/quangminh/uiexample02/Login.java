@@ -14,6 +14,9 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
@@ -31,6 +34,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     CircleIndicator circleIndicator;
     private List<Photo> mLists;
     private Timer timer;
+    FirebaseUser firebaseUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +63,20 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         dangnhap.setOnClickListener(this);
         dangky.setOnClickListener(this);
 
+    }
+
+    //auto login
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        if(firebaseUser!=null){
+            Intent intent = new Intent(Login.this, Setting.class);
+            startActivity(intent);
+            finish();
+        }
     }
 
     private void autoSlideImage() {
